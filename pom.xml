@@ -93,62 +93,6 @@
 				<type>pom</type>
 			</dependency>
 			<dependency>
-				<groupId>org.apache.logging.log4j</groupId>
-				<artifactId>log4j-api</artifactId>
-				<version>${org.apache.logging.log4j.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.logging.log4j</groupId>
-				<artifactId>log4j-core</artifactId>
-				<version>${org.apache.logging.log4j.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.logging.log4j</groupId>
-				<artifactId>log4j-1.2-api</artifactId>
-				<version>${org.apache.logging.log4j.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.logging.log4j</groupId>
-				<artifactId>log4j-jcl</artifactId>
-				<version>${org.apache.logging.log4j.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.logging.log4j</groupId>
-				<artifactId>log4j-jul</artifactId>
-				<version>${org.apache.logging.log4j.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.logging.log4j</groupId>
-				<artifactId>log4j-slf4j-impl</artifactId>
-				<version>${org.apache.logging.log4j.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.logging.log4j</groupId>
-				<artifactId>log4j-web</artifactId>
-				<version>${org.apache.logging.log4j.version}</version>
-				<scope>runtime</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.logging.log4j</groupId>
-				<artifactId>log4j-taglib</artifactId>
-				<version>${org.apache.logging.log4j.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.logging.log4j</groupId>
-				<artifactId>log4j-flume-ng</artifactId>
-				<version>${org.apache.logging.log4j.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.logging.log4j</groupId>
-				<artifactId>log4j-to-slf4j</artifactId>
-				<version>${org.apache.logging.log4j.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.logging.log4j</groupId>
-				<artifactId>log4j-iostreams</artifactId>
-				<version>${org.apache.logging.log4j.version}</version>
-			</dependency>
-			<dependency>
 				<groupId>com.lmax</groupId>
 				<artifactId>disruptor</artifactId>
 				<version>3.3.6</version>
@@ -176,7 +120,12 @@
 				<version>4.12</version>
 				<scope>test</scope>
 			</dependency>
-			
+			<dependency>
+				<groupId>com.jayway.jsonpath</groupId>
+				<artifactId>json-path-assert</artifactId>
+				<version>2.2.0</version>
+				<scope>test</scope>
+			</dependency>
 			
 			<dependency>
 				<groupId>org.springframework</groupId>
