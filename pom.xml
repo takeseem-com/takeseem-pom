@@ -220,33 +220,16 @@
 			
 			<dependency>
 				<groupId>org.springframework</groupId>
-				<artifactId>spring-webmvc</artifactId>
+				<artifactId>spring-framework-bom</artifactId>
 				<version>${org.springframework.version}</version>
+				<scope>import</scope>
+				<type>pom</type>
 			</dependency>
 			<dependency>
 				<groupId>org.springframework</groupId>
-				<artifactId>spring-context</artifactId>
+				<artifactId>spring-test</artifactId>
 				<version>${org.springframework.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-context-support</artifactId>
-				<version>${org.springframework.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-web</artifactId>
-				<version>${org.springframework.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-aop</artifactId>
-				<version>${org.springframework.version}</version>
-			</dependency>
-			<dependency>
-			    <groupId>org.springframework</groupId>
-			    <artifactId>spring-oxm</artifactId>
-			    <version>${org.springframework.version}</version>
+				<scope>test</scope>
 			</dependency>
 			<dependency>
 			    <groupId>org.aspectj</groupId>
@@ -267,53 +250,6 @@
 				<groupId>asm</groupId>
 				<artifactId>asm</artifactId>
 				<version>3.3.1</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-tx</artifactId>
-				<version>${org.springframework.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-jdbc</artifactId>
-				<version>${org.springframework.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-messaging</artifactId>
-				<version>${org.springframework.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-beans</artifactId>
-				<version>${org.springframework.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-core</artifactId>
-				<version>${org.springframework.version}</version>
-				<exclusions>
-					<exclusion>
-						<artifactId>commons-logging</artifactId>
-						<groupId>commons-logging</groupId>
-					</exclusion>
-				</exclusions>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-jms</artifactId>
-				<version>${org.springframework.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-expression</artifactId>
-				<version>${org.springframework.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-test</artifactId>
-				<version>${org.springframework.version}</version>
-				<scope>test</scope>
 			</dependency>
 			<dependency>
 				<groupId>com.fasterxml.jackson.core</groupId>
