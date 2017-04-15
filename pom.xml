@@ -10,6 +10,31 @@
 		<pluginManagement>
 			<plugins>
 				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>${org.eclipse.m2e.version}</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>com.fizzed</groupId>
+										<artifactId>rocker-maven-plugin</artifactId>
+										<versionRange>[0.0.1,)</versionRange>
+										<goals>
+											<goal>generate</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore/>
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+				
+				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
 					<version>3.6.1</version>
@@ -160,6 +185,21 @@
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-checkstyle-plugin</artifactId>
 					<version>2.17</version>
+				</plugin>
+				
+				<plugin>
+					<groupId>com.fizzed</groupId>
+					<artifactId>rocker-maven-plugin</artifactId>
+					<version>${com.fizzed.rocker.version}</version>
+					<executions>
+						<execution>
+							<id>generate-rocker-templates</id>
+							<phase>generate-sources</phase>
+							<goals>
+								<goal>generate</goal>
+							</goals>
+						</execution>
+					</executions>
 				</plugin>
 			</plugins>
 		</pluginManagement>
@@ -510,6 +550,19 @@
 				<version>${io.vertx.version}</version>
 				<scope>test</scope>
 			</dependency>
+			
+			<dependency>
+				<groupId>com.fizzed</groupId>
+				<artifactId>rocker-runtime</artifactId>
+				<version>${com.fizzed.rocker.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.fizzed</groupId>
+				<artifactId>rocker-compiler</artifactId>
+				<version>${com.fizzed.rocker.version}</version>
+				<scope>provided</scope>
+			</dependency>
+			
 		</dependencies>
 	</dependencyManagement>
 	
@@ -519,6 +572,7 @@
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		
+		<org.eclipse.m2e.version>1.0.0</org.eclipse.m2e.version>
 		<javax.mail.version>1.5.6</javax.mail.version>
 		<javax.servlet.version>3.1.0</javax.servlet.version>
 		<org.apache.logging.log4j.version>2.8.1</org.apache.logging.log4j.version>
@@ -529,6 +583,7 @@
 		<org.apache.activemq.version>5.14.4</org.apache.activemq.version>
 		<io.netty.version>4.1.9.Final</io.netty.version>
 		<io.vertx.version>3.4.1</io.vertx.version>
+		<com.fizzed.rocker.version>0.18.0</com.fizzed.rocker.version>
 	</properties>
 </project>
 	
