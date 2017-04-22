@@ -329,6 +329,12 @@
 				<version>0.9.5.2</version>
 			</dependency>
 			<dependency>
+				<groupId>com.mchange</groupId>
+				<artifactId>mchange-commons-java</artifactId>
+				<version>0.2.12</version>
+			</dependency>
+			
+			<dependency>
 				<groupId>mysql</groupId>
 				<artifactId>mysql-connector-java</artifactId>
 				<version>6.0.6</version>
@@ -337,7 +343,7 @@
 			<dependency>
 				<groupId>org.javassist</groupId>
 				<artifactId>javassist</artifactId>
-				<version>3.21.0-GA</version>
+				<version>3.22.0-CR1</version>
 			</dependency>
 			
 			<dependency>
@@ -551,7 +557,27 @@
 			</dependency>
 			<dependency>
 				<groupId>io.vertx</groupId>
+				<artifactId>vertx-auth-common</artifactId>
+				<version>${io.vertx.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.vertx</groupId>
 				<artifactId>vertx-jdbc-client</artifactId>
+				<version>${io.vertx.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.vertx</groupId>
+				<artifactId>vertx-sql-common</artifactId>
+				<version>${io.vertx.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.vertx</groupId>
+				<artifactId>vertx-mysql-postgresql-client</artifactId>
+				<version>${io.vertx.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.vertx</groupId>
+				<artifactId>vertx-redis-client</artifactId>
 				<version>${io.vertx.version}</version>
 			</dependency>
 			<dependency>
@@ -560,6 +586,23 @@
 				<version>${io.vertx.version}</version>
 				<scope>test</scope>
 			</dependency>
+			
+			<dependency>
+				<groupId>org.scala-lang</groupId>
+				<artifactId>scala-library</artifactId>
+				<version>2.12.1</version>
+			</dependency>
+			<dependency>
+				<groupId>joda-time</groupId>
+				<artifactId>joda-time</artifactId>
+				<version>2.9.9</version>
+			</dependency>
+			<dependency>
+				<groupId>org.joda</groupId>
+				<artifactId>joda-convert</artifactId>
+				<version>1.8.1</version>
+			</dependency>
+			
 			
 			<dependency>
 				<groupId>com.fizzed</groupId>
