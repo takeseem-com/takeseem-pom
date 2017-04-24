@@ -425,7 +425,7 @@
 				<exclusions>
 					<exclusion>
 						<groupId>org.springframework</groupId>
-						<artifactId>spring</artifactId>
+						<artifactId>spring-web</artifactId>
 					</exclusion>
 					<exclusion>
 						<artifactId>log4j</artifactId>
