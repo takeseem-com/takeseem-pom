@@ -524,6 +524,21 @@
 				<version>${io.vertx.version}</version>
 				<scope>test</scope>
 			</dependency>
+			<dependency>
+				<groupId>io.vertx</groupId>
+				<artifactId>vertx-mysql-postgresql-client</artifactId>
+				<version>${io.vertx.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>com.github.mauricio</groupId>
+						<artifactId>postgresql-async_2.12</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>io.netty</groupId>
+						<artifactId>netty-all</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
 			
 			<dependency>
 				<groupId>org.scala-lang</groupId>
