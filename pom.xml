@@ -6,9 +6,23 @@
 	<version>0.1.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	
+	<licenses>
+		<license>
+			<name>Apache License, Version 2.0</name>
+			<url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+	
 	<build>
 		<pluginManagement>
 			<plugins>
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+				</plugin>
+				
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
@@ -17,7 +31,7 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-war-plugin</artifactId>
-					<version>3.0.0</version>
+					<version>3.1.0</version>
 					<configuration>
 						<webResources>
 							<resource>
@@ -47,9 +61,7 @@
 					<version>3.0.2</version>
 					<executions>
 						<execution>
-							<phase>package</phase>
 							<goals>
-								<goal>jar</goal>
 								<goal>test-jar</goal>
 							</goals>
 						</execution>
@@ -62,8 +74,106 @@
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-install-plugin</artifactId>
+					<version>2.5.2</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-assembly-plugin</artifactId>
 					<version>3.0.0</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-shade-plugin</artifactId>
+					<version>3.0.0</version>
+				</plugin>
+				
+				
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-site-plugin</artifactId>
+					<version>3.6</version>
+				</plugin>
+				
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>findbugs-maven-plugin</artifactId>
+					<version>3.0.4</version>
+					<configuration>
+						<xmlOutput>true</xmlOutput>
+						<excludeFilterFile>${basedir}/src/main/scripts/findbugs-exclude.xml</excludeFilterFile>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.jacoco</groupId>
+					<artifactId>jacoco-maven-plugin</artifactId>
+					<version>0.7.9</version>
+					<executions>
+						<execution>
+							<id>default-prepare-agent</id>
+							<goals>
+								<goal>prepare-agent</goal>
+							</goals>
+						</execution>
+						<execution>
+							<id>default-prepare-agent-integration</id>
+							<goals>
+								<goal>prepare-agent-integration</goal>
+							</goals>
+						</execution>
+						<execution>
+							<id>default-report</id>
+							<goals>
+								<goal>report</goal>
+							</goals>
+						</execution>
+						<execution>
+							<id>default-report-integration</id>
+							<goals>
+								<goal>report-integration</goal>
+							</goals>
+						</execution>
+						<execution>
+							<id>default-check</id>
+							<goals>
+								<goal>check</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>2.20</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-failsafe-plugin</artifactId>
+					<version>2.20</version>
+					<executions>
+						<execution>
+							<id>default-integration-test</id>
+							<goals>
+								<goal>integration-test</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				
+				<plugin>
+					<groupId>org.sonarsource.scanner.maven</groupId>
+					<artifactId>sonar-maven-plugin</artifactId>
+					<version>3.3.0.603</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-pmd-plugin</artifactId>
+					<version>3.7</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-checkstyle-plugin</artifactId>
+					<version>2.17</version>
 				</plugin>
 			</plugins>
 		</pluginManagement>
@@ -93,62 +203,6 @@
 				<type>pom</type>
 			</dependency>
 			<dependency>
-				<groupId>org.apache.logging.log4j</groupId>
-				<artifactId>log4j-api</artifactId>
-				<version>${org.apache.logging.log4j.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.logging.log4j</groupId>
-				<artifactId>log4j-core</artifactId>
-				<version>${org.apache.logging.log4j.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.logging.log4j</groupId>
-				<artifactId>log4j-1.2-api</artifactId>
-				<version>${org.apache.logging.log4j.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.logging.log4j</groupId>
-				<artifactId>log4j-jcl</artifactId>
-				<version>${org.apache.logging.log4j.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.logging.log4j</groupId>
-				<artifactId>log4j-jul</artifactId>
-				<version>${org.apache.logging.log4j.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.logging.log4j</groupId>
-				<artifactId>log4j-slf4j-impl</artifactId>
-				<version>${org.apache.logging.log4j.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.logging.log4j</groupId>
-				<artifactId>log4j-web</artifactId>
-				<version>${org.apache.logging.log4j.version}</version>
-				<scope>runtime</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.logging.log4j</groupId>
-				<artifactId>log4j-taglib</artifactId>
-				<version>${org.apache.logging.log4j.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.logging.log4j</groupId>
-				<artifactId>log4j-flume-ng</artifactId>
-				<version>${org.apache.logging.log4j.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.logging.log4j</groupId>
-				<artifactId>log4j-to-slf4j</artifactId>
-				<version>${org.apache.logging.log4j.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.logging.log4j</groupId>
-				<artifactId>log4j-iostreams</artifactId>
-				<version>${org.apache.logging.log4j.version}</version>
-			</dependency>
-			<dependency>
 				<groupId>com.lmax</groupId>
 				<artifactId>disruptor</artifactId>
 				<version>3.3.6</version>
@@ -176,37 +230,25 @@
 				<version>4.12</version>
 				<scope>test</scope>
 			</dependency>
+			<dependency>
+				<groupId>com.jayway.jsonpath</groupId>
+				<artifactId>json-path-assert</artifactId>
+				<version>2.2.0</version>
+				<scope>test</scope>
+			</dependency>
 			
-			
 			<dependency>
 				<groupId>org.springframework</groupId>
-				<artifactId>spring-webmvc</artifactId>
+				<artifactId>spring-framework-bom</artifactId>
 				<version>${org.springframework.version}</version>
+				<scope>import</scope>
+				<type>pom</type>
 			</dependency>
 			<dependency>
 				<groupId>org.springframework</groupId>
-				<artifactId>spring-context</artifactId>
+				<artifactId>spring-test</artifactId>
 				<version>${org.springframework.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-context-support</artifactId>
-				<version>${org.springframework.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-web</artifactId>
-				<version>${org.springframework.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-aop</artifactId>
-				<version>${org.springframework.version}</version>
-			</dependency>
-			<dependency>
-			    <groupId>org.springframework</groupId>
-			    <artifactId>spring-oxm</artifactId>
-			    <version>${org.springframework.version}</version>
+				<scope>test</scope>
 			</dependency>
 			<dependency>
 			    <groupId>org.aspectj</groupId>
@@ -229,66 +271,11 @@
 				<version>3.3.1</version>
 			</dependency>
 			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-tx</artifactId>
-				<version>${org.springframework.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-jdbc</artifactId>
-				<version>${org.springframework.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-messaging</artifactId>
-				<version>${org.springframework.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-beans</artifactId>
-				<version>${org.springframework.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-core</artifactId>
-				<version>${org.springframework.version}</version>
-				<exclusions>
-					<exclusion>
-						<artifactId>commons-logging</artifactId>
-						<groupId>commons-logging</groupId>
-					</exclusion>
-				</exclusions>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-jms</artifactId>
-				<version>${org.springframework.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-expression</artifactId>
-				<version>${org.springframework.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-test</artifactId>
-				<version>${org.springframework.version}</version>
-				<scope>test</scope>
-			</dependency>
-			<dependency>
-				<groupId>com.fasterxml.jackson.core</groupId>
-				<artifactId>jackson-databind</artifactId>
-				<version>${com.fasterxml.jackson.core.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.fasterxml.jackson.core</groupId>
-				<artifactId>jackson-annotations</artifactId>
-				<version>${com.fasterxml.jackson.core.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.fasterxml.jackson.core</groupId>
-				<artifactId>jackson-core</artifactId>
-				<version>${com.fasterxml.jackson.core.version}</version>
+				<groupId>com.fasterxml.jackson</groupId>
+				<artifactId>jackson-bom</artifactId>
+				<version>2.9.0.pr2</version>
+				<scope>import</scope>
+				<type>pom</type>
 			</dependency>
 			<dependency>
 				<groupId>com.fasterxml</groupId>
@@ -299,7 +286,7 @@
 			<dependency>
 				<groupId>org.freemarker</groupId>
 				<artifactId>freemarker</artifactId>
-				<version>2.3.25-incubating</version>
+				<version>2.3.26-incubating</version>
 			</dependency>
 			
 			<dependency>
@@ -308,15 +295,21 @@
 				<version>0.9.5.2</version>
 			</dependency>
 			<dependency>
+				<groupId>com.mchange</groupId>
+				<artifactId>mchange-commons-java</artifactId>
+				<version>0.2.12</version>
+			</dependency>
+			
+			<dependency>
 				<groupId>mysql</groupId>
 				<artifactId>mysql-connector-java</artifactId>
-				<version>6.0.5</version>
+				<version>6.0.6</version>
 			</dependency>
 
 			<dependency>
 				<groupId>org.javassist</groupId>
 				<artifactId>javassist</artifactId>
-				<version>3.21.0-GA</version>
+				<version>3.22.0-CR2</version>
 			</dependency>
 			
 			<dependency>
@@ -387,7 +380,7 @@
 			<dependency>
 				<groupId>com.qiniu</groupId>
 				<artifactId>qiniu-java-sdk</artifactId>
-				<version>[7.2.5, 7.2.99]</version>
+				<version>[7.2.6, 7.2.99]</version>
 			</dependency>
 			
 			
@@ -398,7 +391,7 @@
 				<exclusions>
 					<exclusion>
 						<groupId>org.springframework</groupId>
-						<artifactId>spring</artifactId>
+						<artifactId>spring-web</artifactId>
 					</exclusion>
 					<exclusion>
 						<artifactId>log4j</artifactId>
@@ -417,11 +410,15 @@
 			<dependency>
 				<groupId>org.apache.zookeeper</groupId>
 				<artifactId>zookeeper</artifactId>
-				<version>3.4.9</version>
+				<version>3.4.10</version>
 				<exclusions>
 					<exclusion>
 						<groupId>log4j</groupId>
 						<artifactId>log4j</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>io.netty</groupId>
+						<artifactId>netty</artifactId>
 					</exclusion>
 				</exclusions>
 			</dependency>
@@ -448,7 +445,52 @@
 			<dependency>
 			<groupId>io.netty</groupId>
 				<artifactId>netty-all</artifactId>
-				<version>4.1.8.Final</version>
+				<version>${io.netty.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.netty</groupId>
+				<artifactId>netty-common</artifactId>
+				<version>${io.netty.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.netty</groupId>
+				<artifactId>netty-buffer</artifactId>
+				<version>${io.netty.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.netty</groupId>
+				<artifactId>netty-transport</artifactId>
+				<version>${io.netty.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.netty</groupId>
+				<artifactId>netty-handler</artifactId>
+				<version>${io.netty.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.netty</groupId>
+				<artifactId>netty-handler-proxy</artifactId>
+				<version>${io.netty.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.netty</groupId>
+				<artifactId>netty-codec-http</artifactId>
+				<version>${io.netty.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.netty</groupId>
+				<artifactId>netty-codec-http2</artifactId>
+				<version>${io.netty.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.netty</groupId>
+				<artifactId>netty-resolver</artifactId>
+				<version>${io.netty.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.netty</groupId>
+				<artifactId>netty-resolver-dns</artifactId>
+				<version>${io.netty.version}</version>
 			</dependency>
 			
 			<dependency>
@@ -470,38 +512,90 @@
 			<dependency>
 				<groupId>io.dropwizard.metrics</groupId>
 				<artifactId>metrics-core</artifactId>
-				<version>3.2.0</version>
+				<version>3.2.2</version>
+			</dependency>
+			
+			<dependency>
+				<groupId>io.vertx</groupId>
+				<artifactId>vertx-dependencies</artifactId>
+				<version>${io.vertx.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>io.vertx</groupId>
+				<artifactId>vertx-unit</artifactId>
+				<version>${io.vertx.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>io.vertx</groupId>
+				<artifactId>vertx-mysql-postgresql-client</artifactId>
+				<version>${io.vertx.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>com.github.mauricio</groupId>
+						<artifactId>postgresql-async_2.12</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>io.netty</groupId>
+						<artifactId>netty-all</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			
+			<dependency>
+				<groupId>org.scala-lang</groupId>
+				<artifactId>scala-library</artifactId>
+				<version>2.12.2</version>
+			</dependency>
+			<dependency>
+				<groupId>joda-time</groupId>
+				<artifactId>joda-time</artifactId>
+				<version>2.9.9</version>
+			</dependency>
+			<dependency>
+				<groupId>org.joda</groupId>
+				<artifactId>joda-convert</artifactId>
+				<version>1.8.1</version>
+			</dependency>
+			
+			<dependency>
+				<groupId>com.ibeetl</groupId>
+				<artifactId>beetl</artifactId>
+				<version>2.7.13</version>
+			</dependency>
+			<dependency>
+				<groupId>com.ibeetl</groupId>
+				<artifactId>beetlsql</artifactId>
+				<version>2.8.10</version>
+			</dependency>
+			
+			<dependency>
+				<groupId>org.antlr</groupId>
+				<artifactId>antlr4-runtime</artifactId>
+				<version>4.7</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
 	
 	<!-- 定义系统属性 -->
 	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding><!-- compile插件 -->
+		<!-- compile插件 -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
+		<assembly.tarLongFileMode>gnu</assembly.tarLongFileMode>
 		
 		<javax.mail.version>1.5.6</javax.mail.version>
 		<javax.servlet.version>3.1.0</javax.servlet.version>
-		<org.apache.logging.log4j.version>2.8.1</org.apache.logging.log4j.version>
-		<org.slf4j.version>1.7.24</org.slf4j.version>
-		<org.springframework.version>4.3.7.RELEASE</org.springframework.version>
-		<com.fasterxml.jackson.core.version>2.8.7</com.fasterxml.jackson.core.version>
+		<org.apache.logging.log4j.version>2.8.2</org.apache.logging.log4j.version>
+		<org.slf4j.version>1.7.25</org.slf4j.version>
+		<org.springframework.version>4.3.8.RELEASE</org.springframework.version>
 		<org.apache.httpcomponents.version>4.5.3</org.apache.httpcomponents.version>
-		<org.apache.activemq.version>5.14.4</org.apache.activemq.version>
+		<org.apache.activemq.version>5.14.5</org.apache.activemq.version>
+		<io.netty.version>4.1.9.Final</io.netty.version>
+		<io.vertx.version>3.4.2</io.vertx.version>
 	</properties>
-	
-	<reporting>
-		<plugins>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>findbugs-maven-plugin</artifactId>
-				<version>3.0.4</version>
-				<configuration>
-					<excludeFilterFile>${basedir}/src/main/scripts/findbugs-exclude.xml</excludeFilterFile>
-				</configuration>
-			</plugin>
-		</plugins>
-	</reporting>
 </project>
 	
